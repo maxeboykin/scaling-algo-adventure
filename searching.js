@@ -20,3 +20,32 @@ function binarySearch(array, target) {
   return -1;
 }
 
+/*
+Time is O(N) since we have to go through the entire input array. Space is O(1) since its just an array of 3 memory slots
+*/
+
+function findThreeLargestNumbers(array) {
+  let threeNums = ['-', '-', '-'];
+  for(let i = 0; i < array.length; i++){
+    if(threeNums[1] === '-' || threeNums[2] === '-'){
+      if(threeNums[2] === '-') threeNums[2] = array[i]; //all numbers are empty
+      else if(threeNums[1] === '-') threeNums[1] = array[i]; //right number filled, first two empty
+    }
+    else if(array[i] > threeNums[0] || threeNums[0] === '-'){
+      if(array[i] > threeNums[1]){
+        if(array[i] > threeNums[2]){
+          threeNums[0] = threeNums[1];
+          threeNums[1] = threeNums[2];
+          threeNums[2] = array[i];
+          continue;
+        }
+        threeNums[0] = threeNums[1];
+        threeNums[1] = array[i];
+        continue;
+      }
+      threeNums[0] = array[i];
+      continue;
+    }
+  }
+  return threeNums;
+}
