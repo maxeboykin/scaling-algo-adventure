@@ -42,3 +42,23 @@ function getNthFibMemoize(n, memoize = {1: 0, 2: 1}) {
     return returnValue;
   }
 }
+
+/*
+Time complexity is O(n) since we need to go through all elements in the array
+and each subArray. n = elements and m = subelements )(n+m) => O(n).
+Space complexity will be the maximum depth of the search which would be
+O(D), D as for depth, the most inner sub element. Due to the callstack.
+*/
+
+function productSum(array, multiplier = 1, sum = 0) {
+  for(let i = 0; i < array.length; i++){
+    let element = array[i];
+    if(Array.isArray(element)){
+      sum += productSum(element, multiplier+1);
+    }
+    else {
+      sum += element;
+    }
+  }
+  return sum * multiplier;
+}
