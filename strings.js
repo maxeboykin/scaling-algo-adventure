@@ -49,4 +49,26 @@ function caesarCipherEncryptor(string, key){
   }
   return newLetters.join("");
 }
+/*
+never do string += since strings concatenation is immutable, each time you do that the program needs to re read the entire string so each time its an O(N) operation!!!!!
+for space it will be 2 x n since for each character we will also have a number so that is best case scenario. sometimes you will have duplicates of each char if the count is more than 9. this leads to an O(N) operation
 
+Note that I had a while loop inside a for loop which caused an O(N^2) time operation. I ended up changing it to an if statement which held the opposite logic (to not continue counting length) which made it easier to enable an O(N) operation, "string[i] !== string[i-1] || length ==9 vs while (string[i] === string[i-1] && length < 9)
+*/
+
+function runLengthEncoding(string) {
+  let chars = [];
+  let length = 1;
+  for (let i = 1; i < string.length; i++){
+    if(string[i] !== string[i-1] || length === 9){
+      chars.push(length);
+      chars.push(string[i-1]);
+      length = 0;
+    }
+    length++;
+  }
+    chars.push(length);
+    chars.push(string[string.length-1]);
+
+  return chars.join("");
+}
