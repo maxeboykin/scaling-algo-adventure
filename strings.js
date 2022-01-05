@@ -72,3 +72,24 @@ function runLengthEncoding(string) {
 
   return chars.join("");
 }
+
+/*
+Many ways to do this problem. If you loop through the document, you would need to loop through the document again to know the count of that one letter and then loop through the given characters to see if there is enough. m = length of document, n = length of characters. It would be O(m (m + n)) => m^2 + mn and then you would have o(1) for space since nothing is being created except for a count variable.
+
+Another solution is through memoization. You would loop through the document again and characters again and if there is enough characters for that document char then you would add that letter to the memoization object. So if you see that latter again in your loop through the document you would just continue to the next character. This would be O ( c (n + m)) with c being the number of unique characters in the document, m = length of document and and = length of characters.
+
+Best solution is to make a hash table.
+*/
+
+function generateDocument(characters, document){
+  let counts = {};
+  for(let char of characters){
+    if(counts[char]) counts[char]++;
+    counts[char] = 1;
+  }
+  for(let char of document){
+    if(counts[char] > 0) counts[char]--;
+    else return false;
+  }
+  return true;
+}
