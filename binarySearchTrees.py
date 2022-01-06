@@ -12,8 +12,8 @@ unbalanced (either always left or always right node).
 class BST:
   def __init__(self, value):
     self.value = value
-    self.left = null
-    self.right = null
+    self.left = None
+    self.right = None
 
 
 

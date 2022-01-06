@@ -27,3 +27,64 @@ function findClosestValueInBstHelper(tree, target, closest = tree.value){
     return closest;
   }
 }
+
+/*
+In a BST, a nodse value must be greater than the nodes to the left
+and less than or equal to the nodes to the right. All nodes should
+satisfy this property.
+*/
+
+class BST {
+  constructor(value) {
+    this.value = value
+    this.left = null
+    this.right = null
+  }
+
+  insert(value) {
+    if(value < this.value) {
+      if(this.left === null) this.left = new BST(value);
+      else {
+        this.left.insert(value);
+      }
+    } else {
+      if(this.right === null) this.right = new BST(value);
+      else {
+        this.right.insert(value);
+      }
+    }
+    return this;
+  }
+
+  contains(value){
+    if(this.value === value) return true;
+    if(value < this.value){
+      if(this.left === null) return false;
+      else {
+        return this.left.contains(value);
+      }
+    }
+    else if(value> this.value){
+      if(this.right === null) return false;
+      else {
+         return this.right.contains(value);
+      }
+    }
+  }
+
+getMinValue(){
+  //base case
+  if(this.left === null) return this.value
+  else {
+    return this.left.getMinValue();
+  }
+}
+
+getMaxValue(){
+  if(this.right === null) return this.value;
+  else {
+    return this.right.getMaxValue();
+  }
+}
+
+}
