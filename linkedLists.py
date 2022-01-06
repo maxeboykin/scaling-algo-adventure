@@ -27,3 +27,12 @@ def removeDuplicatesFromLinkedList(linkedList):
   return linkedList
 
 
+def minimumWaitingTime(queries):
+  sum = 0
+  queries.sort()
+  for idx, duration in enumerate(queries):
+    queriesLeft = len(queries) - idx + 1
+    sum += duration * queriesLeft
+
+  return sum
+
