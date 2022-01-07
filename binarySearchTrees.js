@@ -72,6 +72,42 @@ class BST {
     }
   }
 
+  remove(value, parent = null) {
+    if(value < this.value) { //first step is to find the node you are looking for
+      if (this.left !== null) {
+        this.left.remove(value, this);
+      }
+    } else if(value > this.value) {
+      if(this.right !== null) {
+        this.right.remove(value, this);
+      }
+    } else { //after you find the node you are trying to rmeove
+      if (this.left !== null && this.right !== null) {
+        this.value = this.right.getMinValue(); //get smallest value on the right side of the BST and assign to current node
+        //we want to remove the smallest value of the right tree and move
+        //that value to our current node "removing it"
+        this.right.remove(this.value, this); //need to remove the node with the value you just grabbed.
+      } else if (parent === null) {
+        if(this.left !== null) {
+          this.value = this.left.value;
+          this.right = this.left.right;
+          this.left = this.left.left;
+        } else if (this.right !== null) {
+          this.value = this.right.value;
+          this.left = this.right.left;
+          this.right = this.right.right;
+        } else {
+          //this is a single node tree
+        }
+      } else if (parent.left === this) {
+        parent.left = this.left !== null ? this.left : this.right;
+      } else if (parent.right === this) {
+        parent.right = this.left !== null ? this.left : this.right;
+      }
+    }
+    return this;
+  }
+
 getMinValue(){
   //base case
   if(this.left === null) return this.value
