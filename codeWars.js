@@ -12,3 +12,28 @@ function expandedForm(num) {
   return returnStr;
 }
 
+function incrementString (strng) {
+  var num = 0
+  let numStr = ""
+  if (strng.length < 1) return "1";
+  if (!'0123456789'.includes(strng[strng.length-1])) return strng += '1';
+  else {
+    num = 1;
+    while('0123456789'.includes(strng[strng.length-num])){
+      numStr += strng[strng.length-num];
+      num++;
+    }
+  }
+  let stringNum = (numStr.split("").reverse().join(""));
+  let numLength = stringNum.length;
+  let originalNum = parseInt(stringNum);
+  originalNum++;
+  let newStringNum = originalNum.toString();
+  while(newStringNum.length < numLength){
+    newStringNum = '0' + newStringNum;
+  }
+
+  strng = strng.slice(0, strng.length - num+1);
+
+  return strng + newStringNum;
+}
