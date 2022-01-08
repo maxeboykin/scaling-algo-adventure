@@ -37,3 +37,14 @@ function incrementString (strng) {
 
   return strng + newStringNum;
 }
+
+function count (string) {
+  let dict = {};
+  for (let char of string){
+    if(dict[char]) dict[char]++;
+    else {
+      dict[char] = 1;
+    }
+  }
+   return dict;
+}
