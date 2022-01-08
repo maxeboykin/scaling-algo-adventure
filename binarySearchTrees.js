@@ -87,7 +87,7 @@ class BST {
         //we want to remove the smallest value of the right tree and move
         //that value to our current node "removing it"
         this.right.remove(this.value, this); //need to remove the node with the value you just grabbed.
-      } else if (parent === null) { //this is the root node case with only one child node
+      } else if (parent === null) {//this is the root node case with only one child node
         if(this.left !== null) { //watch condition on line 85, left or right has to be null . takes left first to satisfy BST criteria.
           this.value = this.left.value;
           this.right = this.left.right;
