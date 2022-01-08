@@ -81,3 +81,21 @@ function decipherThis(str) {
     }
     return `${String.fromCharCode(parseInt(ASCII))}${lastChar}${restWord}${secondChar}`;
   }
+
+  function high(x){
+    let arrOfChars = x.split(" ");
+    //let arrOfPoints = x.split(" ").map((word)=> word.reduce((sum, letter) => sum + alphPoints(letter)));
+      let arrOfPoints = x.split(" ").map((word)=> {
+        let total = 0;
+      for(let i = 0; i < word.length; i++){
+        total += alphPoints[word[i]];
+      }
+        return total;
+      });
+      var indexOfMaxValue = arrOfPoints.reduce((indexMax, word, index, array) => word > array[indexMax] ? index : indexMax, 0);
+      return arrOfChars[indexOfMaxValue];
+    }
+
+
+    let alphPoints = {'a':1,'b':2,'c':3,'d':4,'e':5,'f':6,'g':7,'h':8,'i':9,'j':10,'k':11,'l':12,'m':13,'n':14,
+                      'o':15,'p':16,'q':17,'r':18,'s':19,'t':20,'u':21,'v':22,'w':23,'x':24,'y':25,'z':26}
