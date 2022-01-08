@@ -48,3 +48,36 @@ function count (string) {
   }
    return dict;
 }
+
+function decipherThis(str) {
+  let arrOfWords = str.split(" ");
+  let decipheredArrOfWords = arrOfWords.map((word) => decipherWord(word)).join(" ");
+
+    //String.fromCharCode()
+    return decipheredArrOfWords;
+  };
+
+
+  function decipherWord(word){
+    let ASCII = "";
+    let secondChar = "";
+    let restWord = "";
+    let lastChar = "";
+
+    for (let i = 0; i < word.length; i++){
+      let char = word[i];
+      if(('0123456789').includes(char)){
+        ASCII += char;
+      }
+      else if(i === word.length -1){
+        lastChar = char;
+      }
+      else if(('0123456789').includes(word[i-1]) && !('0123456789').includes(char)){
+        secondChar = char;
+      }
+      else {
+        restWord += char;
+      }
+    }
+    return `${String.fromCharCode(parseInt(ASCII))}${lastChar}${restWord}${secondChar}`;
+  }
