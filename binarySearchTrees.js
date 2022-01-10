@@ -154,3 +154,14 @@ function inOrderTraverse(tree, array = []) {
   }
   return array;
 }
+
+function preOrderTraverse(tree, array = []) {
+  array.push(tree.value);
+  if(tree.left !== null){
+    preOrderTraverse(tree.left, array);
+  }
+  if(tree.right !== null){
+    preOrderTraverse(tree.right, array);
+  }
+  return array;
+}
