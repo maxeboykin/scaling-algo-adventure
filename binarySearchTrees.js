@@ -126,3 +126,20 @@ getMaxValue(){
 }
 
 }
+
+
+function validateBst(tree) {
+  if(tree.left!== null) {
+    if(tree.left.value >= tree.value) return false;
+    else {
+      return validateBst(tree.left);
+    }
+  }
+  if(tree.right !== null){
+    if(tree.right.value < tree.value) return false;
+    else {
+      return validateBst(tree.right);
+    }
+  }
+  return true;
+}
