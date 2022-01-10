@@ -143,3 +143,14 @@ function validateBst(tree) {
   }
   return true;
 }
+
+function inOrderTraverse(tree, array = []) {
+  if(tree.left !== null){
+    inOrderTraverse(tree.left, array);
+  }
+  array.push(tree.value);
+  if(tree.right !== null){
+    inOrderTraverse(tree.right, array);
+  }
+  return array;
+}
