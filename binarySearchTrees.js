@@ -165,3 +165,14 @@ function preOrderTraverse(tree, array = []) {
   }
   return array;
 }
+
+function postOrderTraverse(tree, array = []){
+  if(tree.left !== null){
+    postOrderTraverse(tree.left, array);
+  }
+  if(tree.right !== null) {
+    postOrderTraverse(tree.right, array);
+  }
+  array.push(tree.value);
+  return array;
+}
