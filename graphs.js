@@ -43,7 +43,8 @@ function hasSingleCycle(array){
     i = (i+move) % array.length;
     if(i<0) i = i + array.length;
     numIterations++;
-  }]if(i !== 0 || numIterations !== array.length) return false;
+  }
+  if(i !== 0 || numIterations !== array.length) return false;
 
   return true;
 }
