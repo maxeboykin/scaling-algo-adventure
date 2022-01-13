@@ -31,3 +31,19 @@ class Node {
     return array;
   }
 }
+
+
+function hasSingleCycle(array){
+  let i = 0;
+  let numIterations = 0;
+  while(numIterations < array.length){
+    if(array[i] === 'Infinity') return false;
+    let move = array[i];
+    array[i] = 'Infinity';
+    i = (i+move) % array.length;
+    if(i<0) i = i + array.length;
+    numIterations++;
+  }]if(i !== 0 || numIterations !== array.length) return false;
+
+  return true;
+}
