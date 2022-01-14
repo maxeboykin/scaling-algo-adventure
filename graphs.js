@@ -60,3 +60,19 @@ breadthFirstSearch(array =[]) {
   }
   return array;
 }
+
+
+function riverSizes(matrix) {
+	const sizes = [];
+	const visited = matrix.map(row => row.map(value => false));
+
+//const visited = createMatrix(matrix.length, matrix[0].length);
+for(let i = 0; i < matrix.length; i++){
+	//let row = matrix[i];
+	for(let j =0; j < matrix[i].length; j++){
+		if (visited[i][j]) continue;
+		traverseNode(i, j, matrix, visited, sizes);
+	}
+}
+	return sizes;
+}
