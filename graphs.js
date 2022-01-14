@@ -97,3 +97,15 @@ function traverseNode(i, j, matrix, visited, sizes){
 	if (currentRiverSize > 0) sizes.push(currentRiverSize);
 }
 
+function checkNeighbors(i, j, matrix, visited){
+	const unvisitedNeighbors = []; //check left, up, right, down
+	//check up
+	if(i > 0 && !visited[i-1][j]) unvisitedNeighbors.push([i-1, j]);
+	//check down
+	if(i < matrix.length -1 && !visited[i+1,j]) unvisitedNeighbors.push([i+1, j]);
+	//check left
+	if ( j > 0 && !visited[i][j-1]) unvisitedNeighbors.push([i, j-1]);
+	//check right
+	if(j < matrix[0].length-1 && !visited[i][j+1]) unvisitedNeighbors.push([i, j+1]);
+	return unvisitedNeighbors;
+}
