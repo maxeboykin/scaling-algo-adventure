@@ -76,3 +76,24 @@ for(let i = 0; i < matrix.length; i++){
 }
 	return sizes;
 }
+
+function traverseNode(i, j, matrix, visited, sizes){
+	let currentRiverSize = 0;
+	const nodesToExplore = [[i, j]];
+	while(nodesToExplore.length){
+		const currentNode = nodesToExplore.pop();
+		i = currentNode[0];
+		j = currentNode[1];
+		if(visited[i][j]) continue;
+		visited[i][j] = true;
+		if(matrix[i][j] === 0) continue;
+		currentRiverSize++;
+		const unvisitedNeighbors = checkNeighbors(i, j, matrix, visited);//adding elements at end of the array if there is a 1 found
+		// thats why we use pop on line 20
+		for (const neighbor of unvisitedNeighbors) {
+			nodesToExplore.push(neighbor);
+		}
+	}
+	if (currentRiverSize > 0) sizes.push(currentRiverSize);
+}
+
