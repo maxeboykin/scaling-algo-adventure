@@ -48,3 +48,14 @@ function hasSingleCycle(array){
 
   return true;
 }
+breadthFirstSearch(array =[]) {
+  const queue = [this];
+  while(queue.length > 0){
+    let currentNode = queue.shift();
+    array.push(currentNode.name);
+    for(let child of currentNode.children){
+      queue.push(child);
+    }
+  }
+  return array;
+}
