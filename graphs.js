@@ -48,6 +48,7 @@ function hasSingleCycle(array){
 
   return true;
 }
+
 breadthFirstSearch(array =[]) {
   const queue = [this];
   while(queue.length > 0){
