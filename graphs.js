@@ -61,6 +61,13 @@ breadthFirstSearch(array =[]) {
   return array;
 }
 
+/*
+Comments for riverSizes
+
+*/
+
+
+
 
 function riverSizes(matrix) {
 	const sizes = [];
