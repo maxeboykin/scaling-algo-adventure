@@ -155,6 +155,12 @@ function traverseNodes(node, edges, colors){
 }
 
 
+/*
+Comments for removeIslands
+
+*/
+
+
 function removeIslands(matrix) {
 
 	const visitedOnes = matrix.map(row => row.map(value => false));
