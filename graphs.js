@@ -141,3 +141,57 @@ function traverseNodes(node, edges, colors){
 	colors[node] = BLACK;
 	return false;
 }
+
+function removeIslands(matrix) {
+	let visited = matrix.map(row => row.map(value => false));
+
+  return [];
+}
+
+function traverseImage(i, j, matrix, visited){
+	const nodesToExplore = [[i,j]]
+	while(nodesToExplore.length > 0){
+		let currentNode = nodesToExplore.pop();
+		i = currentNode[0];
+		j = currentNode[1];
+		visited[i][j] = true;
+		if((matrix[i][j]) === 0) continue;
+		const [neighboringIslands, oneAtBorder] = checkNeighbors(i, j, matrix, visited);
+		for(let neighbor of neighboringIslands){
+			nodesToExplore.push(neighbor);
+		}
+	}
+}
+
+function checkNeighbors(i, j, matrix, visited){
+	let unvisitedNeighbors = [];
+	let oneAtBorder = false;
+	//if it is 1 and its part of this island and its on the border it should remove a special case
+	if(i > 0 && !visited[i - 1][j]){
+		unvisitedNeighbors.push([i - 1, j]);
+		if ((i-1 === 0 || j === 0 || j === matrix.length -1) && matrix[i - 1][j] === 1){
+			oneAtBorder = true;
+		}
+	}
+	if(i < matrix.length -1 && !visited[i+1][j]){
+		unvisitedNeighbors.push([i+1, j]);
+		if ((i+1 === matrix.length -1 || j === 0 || j === matrix.length -1) && matrix[i + 1][j] === 1){
+			oneAtBorder = true;
+		}
+	}
+
+	if(j > 0 && !visited[i][j-1]){
+		unvisitedNeighbors.push([i, j-1]);
+		if ((i === 0 || i === matrix[0].length -1 || j-1 === 0) && matrix[i][j-1] === 1){
+			oneAtBorder = true;
+		}
+	}
+	if(j < matrix.length -1 && !visited[i][j+1]){
+		unvisitedNeighbors.push([i+1, j]);
+		if ((i === 0 || i === matrix[0].length -1 || j+1 === matrix.length -1) && matrix[i][j+1] === 1){
+			oneAtBorder = true;
+		}
+	}
+
+	return [unvisitedNeighbors, oneAtBorder];
+}
