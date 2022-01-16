@@ -110,6 +110,11 @@ function checkNeighbors(i, j, matrix, visited){
 	return unvisitedNeighbors;
 }
 
+/*
+Comments for cycleInGraph
+
+*/
+
 
 const [WHITE, GREY, BLACK] = [0, 1, 2];
 
