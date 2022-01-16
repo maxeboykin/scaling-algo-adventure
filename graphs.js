@@ -109,3 +109,35 @@ function checkNeighbors(i, j, matrix, visited){
 	if(j < matrix[0].length-1 && !visited[i][j+1]) unvisitedNeighbors.push([i, j+1]);
 	return unvisitedNeighbors;
 }
+
+
+const [WHITE, GREY, BLACK] = [0, 1, 2];
+
+function cycleInGraph(edges) {
+  const numberOfNodes = edges.length;
+	let colors = new Array(numberOfNodes).fill(WHITE);
+
+	//go through each node via depth first search
+	for(let node = 0; node < numberOfNodes; node++){
+
+		let result = traverseNodes(node, edges, colors);
+
+		if(result === true) return true;
+	}
+
+  return false;
+}
+
+function traverseNodes(node, edges, colors){
+	colors[node] = GREY;
+
+	let neighborsSet = edges[node]; // do all these checks before depth first Search
+	for(let neighbor of neighborsSet){
+		if(colors[neighbor] === GREY) return true;
+		if(colors[neighbor] === BLACK) continue;
+		let result = traverseNodes(neighbor, edges, colors); //DPS
+		if(result === true) return true;
+	}
+	colors[node] = BLACK;
+	return false;
+}
