@@ -154,3 +154,61 @@ function traverseNodes(node, edges, colors){
 	return false;
 }
 
+
+function removeIslands(matrix) {
+
+	const visitedOnes = matrix.map(row => row.map(value => false));
+
+  // loop through the border of the image
+	for (let row = 0; row < matrix.length; row++){
+		for (let col = 0; col < matrix[0].length; col++){
+		const rowIsBorder = (row === 0 || row === matrix.length-1);
+	  const colIsBorder = (col === 0 || col === matrix[0].length -1);
+		const isBorder = (rowIsBorder || colIsBorder);
+			if (!isBorder) continue;
+			if(matrix[row][col] === 1){
+				getOneNeighbors(row, col, matrix, visitedOnes);
+			//visitedOnes[row][col] = true;
+			}
+		}
+	}
+	cleanUpOnes(matrix, visitedOnes);
+  return matrix;
+}
+
+function getOneNeighbors(row, col, matrix, visitedOnes){
+	let nodeList = [[row,col]];
+	while(nodeList.length > 0){
+		let currentNode = nodeList.pop();
+		let row = currentNode[0];
+		let col = currentNode[1];
+		if(matrix[row][col] === 0)continue; //if its not a 1
+		if(visitedOnes[row][col]) continue; //if visited before
+		visitedOnes[row][col] = true;
+		let neighborsArray = findNeighbors(row, col, matrix, visitedOnes);
+		for (let neighbor of neighborsArray){
+			nodeList.push(neighbor);
+		}
+	}
+}
+
+function findNeighbors(row, col, matrix, visitedOnes){
+	let currentNeighbors = [];
+	let rowMax = matrix.length;
+	let colMax = matrix[0].length;
+	if(row > 0 && !visitedOnes[row-1][col]) currentNeighbors.push([row-1,col]); //up
+	if(row < rowMax-1 && !visitedOnes[row+1][col]) currentNeighbors.push([row+1, col]) //down
+	if(col > 0 && !visitedOnes[row][col-1]) currentNeighbors.push([row, col-1]); //left
+	if(col < colMax -1 && !visitedOnes[row][col+1]) currentNeighbors.push([row, col+1])//right
+	return currentNeighbors;
+}
+
+function cleanUpOnes(matrix, visitedOnes){
+	let rowMax = matrix.length;
+	let colMax = matrix[0].length;
+	for (let row = 0; row < rowMax; row++){
+		for (let col = 0; col < colMax; col++){
+			if(!visitedOnes[row][col]) matrix[row][col] = 0;
+		}
+	}
+}
