@@ -123,6 +123,7 @@ Comments for cycleInGraph
 */
 
 
+
 const [WHITE, GREY, BLACK] = [0, 1, 2];
 
 function cycleInGraph(edges) {
@@ -139,6 +140,7 @@ function cycleInGraph(edges) {
 
   return false;
 }
+
 
 function traverseNodes(node, edges, colors){
 	colors[node] = GREY;
@@ -208,6 +210,7 @@ function findNeighbors(row, col, matrix, visitedOnes){
 	if(col < colMax -1 && !visitedOnes[row][col+1]) currentNeighbors.push([row, col+1])//right
 	return currentNeighbors;
 }
+
 
 function cleanUpOnes(matrix, visitedOnes){
 	let rowMax = matrix.length;
