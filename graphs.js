@@ -157,7 +157,7 @@ function traverseNodes(node, edges, colors){
 
 /*
 Comments for removeIslands
-
+Comments
 */
 
 
