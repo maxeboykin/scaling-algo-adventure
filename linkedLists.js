@@ -92,3 +92,17 @@ class DoublyLinkedList {
      }
      node.next = nodeToInsert;
    }
+
+   insertAtPosition(position, nodeToInsert) {
+    if(position === 1) {
+			this.setHead(nodeToInsert);
+			return;
+		}
+		let currentPosition = 1;
+		let currentNode = this.head;
+		while(currentNode !== null && currentPosition++ !== position) currentNode = currentNode.next;
+				if(currentNode === null) this.setTail(nodeToInsert); // means that the position we are inserting is already after the array.
+		else{
+			this.insertBefore(currentNode, nodeToInsert);
+		}
+		}
