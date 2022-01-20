@@ -115,3 +115,14 @@ class DoublyLinkedList {
         if(checkNode.value === target) this.remove(checkNode);
       }
     }
+
+    remove(node) {
+      if(this.head === node) this.head = this.head.next;
+      if(this.tail === node) this.tail = this.tail.prev;
+      let prevNode = node.prev;
+      let nextNode = node.next;
+        if(prevNode !== null) prevNode.next = nextNode;
+        if(nextNode !== null) nextNode.prev = prevNode;
+      node.next = null;
+      node.prev = null;
+    }
