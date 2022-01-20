@@ -126,3 +126,13 @@ class DoublyLinkedList {
       node.next = null;
       node.prev = null;
     }
+
+    containsNodeWithValue(value) {
+      let currentNode = this.head;
+      while(currentNode!== null){
+        if(currentNode.value === value) return true;
+        currentNode = currentNode.next;
+      }
+      return false;
+    }
+  }
