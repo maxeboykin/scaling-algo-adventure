@@ -106,3 +106,12 @@ class DoublyLinkedList {
 			this.insertBefore(currentNode, nodeToInsert);
 		}
 		}
+
+    removeNodesWithValue(target) {
+      let currentNode = this.head;
+      while(currentNode !== null){
+        const checkNode = currentNode;
+        currentNode = currentNode.next; //always get the next node in order to keep checking if theere is another node of taht value
+        if(checkNode.value === target) this.remove(checkNode);
+      }
+    }
