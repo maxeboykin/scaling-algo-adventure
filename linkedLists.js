@@ -47,3 +47,13 @@ class DoublyLinkedList {
     this.head = null;
     this.tail = null;
   }
+
+  setHead(node) {
+    if(this.head === null) {
+			this.head = node;
+			this.tail = node;
+			return
+		}
+		this.insertBefore(this.head, node);
+
+  }
