@@ -27,3 +27,7 @@ function removeDuplicatesFromLinkedList(linkedList) {
   }
   return linkedList;
 }
+
+/*
+Creating an new doubly linked list
+*/
