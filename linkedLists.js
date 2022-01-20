@@ -31,3 +31,12 @@ function removeDuplicatesFromLinkedList(linkedList) {
 /*
 Creating an new doubly linked list
 */
+
+// This is an input class. Do not edit.
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.prev = null;
+    this.next = null;
+  }
+}
