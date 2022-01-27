@@ -1,3 +1,16 @@
+function isValidSubsequence(array, sequence) {
+	let seqIdx = 0;
+  for (const value of array){
+		if (value === sequence[seqIdx]){
+			seqIdx++;
+		}
+}
+	return (seqIdx === sequence.length);
+
+}
+
+
+
 function tournamentWinner(competitions, results) {
 	let dict = {};
 	let currentBestTeam = '';
