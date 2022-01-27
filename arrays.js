@@ -9,7 +9,18 @@ function isValidSubsequence(array, sequence) {
 
 }
 
+function sortedSquaredArray(array) {
+  const newArr = new Array(array.length).fill(0);
 
+	for (let idx = 0; idx < array.length; idx++) {
+		const value = array[idx];
+		newArr[idx] = value * value;
+	}
+
+	newArr.sort((a,b) => a -b);
+
+  return newArr;
+}
 
 function tournamentWinner(competitions, results) {
 	let dict = {};
