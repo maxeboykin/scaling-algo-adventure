@@ -27,6 +27,27 @@ function tournamentWinner(competitions, results) {
   return currentBestTeam;
 }
 
+function threeNumberSum(array, targetSum) {
+	let returnArr = [];
+  array.sort((a,b) => a - b);
+
+	for (let i = 0; i < array.length-2; i++){
+		let left = i +1;
+		let right = array.length-1;
+		while (left < right) {
+			let curSum = array[left] + array[i] + array[right];
+			if(curSum === targetSum){
+				returnArr.push([array[i], array[left], array[right]]);
+				left++;
+				right--;
+			}
+			else if(curSum < targetSum) left++;
+			else if (curSum > targetSum) right--;
+	}
+	}
+return returnArr;
+}
+
 function nonConstructibleChange(coins) {
   coins.sort((a,b) => a - b);
 	let currentChangeCreated = 0;
