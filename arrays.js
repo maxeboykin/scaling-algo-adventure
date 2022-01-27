@@ -27,6 +27,15 @@ function tournamentWinner(competitions, results) {
   return currentBestTeam;
 }
 
+function nonConstructibleChange(coins) {
+  coins.sort((a,b) => a - b);
+	let currentChangeCreated = 0;
+	for(coin of coins){
+		if (coin > currentChangeCreated + 1) return currentChangeCreated + 1;
+	currentChangeCreated += coin;
+	}
+  return currentChangeCreated + 1; //if you hit the end of the coins list
+}
 
 function smallestDifference(arrayOne, arrayTwo) {
   arrayOne.sort((a, b) => a - b);
